@@ -1,0 +1,12 @@
+<h1>Reported days this week:</h1>
+<% const today = week.find(e => e.day === (new Date()).toISOString().substring(0,10)) %> 
+<% console.log(today) %>
+<%  // <h3>average mood today:%> <%=//today ? (Number(today.nmood) + Number(today.mmood))/2 : 'Report both general moods'%><% //</h3> %>
+<div class="week"> 
+<% week.forEach(w => { %>
+    <form class="weekday" method="POST" action="/day/<%=w.id%>">
+       <p class="pee" ><%=w.day.toISOString().substring(0,10)%></p>
+       <input class="inputp" type="submit" value="Check day" />
+    </form>
+<% }) %> 
+</div>

@@ -1,0 +1,13 @@
+<%- include('./partials/header.ejs') %>
+<%const date = new Date();  %> 
+<a href="/logout">logout</a>
+<div class="largecontainer">
+<h1>Welcome <%=user.username  %> </h1>
+<div class="minicontainer">
+<a href="/behaviour/reporting">Report how are you feeling this <%= date.getHours() < 15 ? "morning" : "evening" %> </a>
+<br>
+<a href="/behaviour/summary">Check your summary!</a>
+</div>
+<%- include('./partials/weekdays.ejs')  %>
+</div> 
+<%- include('./partials/footer.ejs') %>

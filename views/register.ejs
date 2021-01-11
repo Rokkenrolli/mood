@@ -1,0 +1,25 @@
+<%- include('./partials/header.ejs') %>
+
+<h1>Register here!</h1>
+
+<form method="POST" action="/auth/registration">
+ <label for="user">Enter username</label>   
+<input required id="user" type="text" name="username"/>
+<label for="email">Enter email</label>   
+<input required id="email" type="text" name="email" value="<%=errors && errors.email ? errors.email.isEmail : "" %>"/>
+<label for="pwd">Enter password</label>   
+<input required id="pwd" type="password" name="password"/>
+<label for="ver">Re-enter password</label>   
+<input required id="ver" type="password" name="verification"/>
+<input type="submit" name="Register!"/>
+</form>
+    <%  if (passwordError) { %>
+        <li><%=passwordError%> </li>
+    <% } %>
+  <% if(errors){ %>   
+    <% Object.keys(errors).forEach((attribute) => { %>
+        <% Object.values(errors[attribute]).forEach((err) => { %>
+            <li><%= err %></li>
+        <% })}) %>
+    <% } %>   
+<%- include('./partials/footer.ejs') %>

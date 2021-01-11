@@ -1,0 +1,18 @@
+<%- include('./partials/header.ejs') %>
+<%- include('./partials/back.ejs') %>
+<% if (exists) { %> 
+ <% console.log(day) %>    
+ <h3><%=day.day.toISOString().substring(0,10) %> </h3>   
+<% if (time === "MORNING") {%><%-include('./partials/dayform.ejs')%><%} %>
+<% if (time === "EVENING") {%><%-include('./partials/nightform.ejs')%><%} %>
+<% }else { %> 
+
+<h1>Looks like you do not have reported anything today. Start reporting!</h1>
+<h3><%=date%></h3>
+<%-include("./partials/changeDay.ejs")%> 
+<form method="POST" action="/api/addDay">
+<input type="date" hidden value="<%=date%>" name="calendar"/>   
+<input type="submit" name="addDay" value="Add day!">
+</form>
+<%} %>  
+<%- include('./partials/footer.ejs') %>

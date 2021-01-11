@@ -1,0 +1,20 @@
+<%- include('./partials/header.ejs') %>
+<div class="login">
+<h1>Please log in</h1>
+
+<form method="POST" action="/auth/login">
+ 
+<label for="email">Enter email</label>   
+<input id="email" type="text" name="email"/>
+<label for="pwd">Enter password</label>   
+<input id="pwd" type="password" name="password"/>
+<input type="submit" name="Login!"/>
+</form>
+
+<% if (loginError) {%>
+    <h3><%=loginError%></h3>
+<%} %> 
+
+<a href="/auth/registration">Don't have an account? Register Here</a>
+</div>
+<%- include('./partials/footer.ejs') %>

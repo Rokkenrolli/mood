@@ -1,0 +1,16 @@
+<div>
+ <form method="POST" action="/behaviour/summary">
+ <% if (res.mavg || res.navg) { %>       
+<h3>Week <%=week%> of <%=year%>. You have reported <%=res.count%> times this week!</h3>
+<p>Average sleepduration: <%=res.sd%></p>
+<p>Average sleepquality: <%=res.sq%></p>
+<p>Average sportduration: <%=res.spd%></p>
+<p>Average studyduration: <%=res.std%></p>
+<p>Average mood: <%=((Number(res.navg) + Number(res.mavg)) /2)%></p>
+<% } else { %>
+    <h1>You have not reported anything this week</h1>    
+<% } %>     
+<p>View another week <input type="week" name="week"/></p>
+<input type="submit" value="Change week"/>
+</form>
+

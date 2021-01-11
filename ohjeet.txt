@@ -1,0 +1,43 @@
+Database schemas
+
+CREATE TABLE registers (
+id SERIAL PRIMARY KEY,
+email TEXT NOT NULL,
+name TEXT NOT NULL,
+password TEXT NOT NULL
+);
+
+CREATE TABLE days (
+id SERIAL PRIMARY KEY,
+sleepduration DECIMAL,
+sportduration DECIMAL,
+studyduration DECIMAL,
+sleepquality INTEGER,
+mmood INTEGER,
+nmood INTEGER,
+user_id INTEGER REFERENCES registers (id),
+eat INTEGER,
+day TIMESTAMP WITH TIME ZONE
+);
+
+
+
+application can be accessed from : https://wsd-mood.herokuapp.com/
+
+local app can be run using the following steps: 
+	populate .env file with your database credentials:
+
+			hostname=xxx
+   			database=xxx
+  			user=xxx
+   			password=xxx
+   			port=5432
+
+	use command: `deno run --allow-net --allow-read  --allow-env --unstable  app.js` to run the application
+
+	use command: deno test --allow-net --allow-read --allow-env --unstable ./tests/apis.js
+	and
+	use command: `deno test --allow-net --allow-read --allow-env ./tests/endpoints.js` 
+	to run tests
+   	
+   

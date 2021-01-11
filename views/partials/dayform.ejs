@@ -1,0 +1,29 @@
+<h2>Morning</h2>
+
+<%-include("changeDay.ejs")%> 
+<form method="POST" action="/behaviour/reporting">
+    <input type="text" hidden name="changed" value="EVENING" />
+    <input type="date" hidden name="day"  value="<%= date%>"/>
+    <input type="submit" value="Report Evening" />
+</form> 
+<form method="POST" action="/api/update">
+    <input hidden name="day" value="<%=date%>"/>
+    <input hidden id="spd" type="number" name="sportduration" value="<%=day.sportduration%>"/>
+    <input hidden id="std" type="number" name="studyduration" value="<%=day.studyduration%>"/>
+    <input hidden id="eat"type="range" name="eat" min="1" max="5" value="<%=day.eat%>"/>
+    <input hidden id="nmood" type="range" name="nmood" min="1" max="5" value="<%=day.nmood%>"/>
+
+    <label for="sld">How much did you sleep?</label>   
+   <input id="sld" min="0" max="24" required type="number" name="sleepduration" value="<%= day.sleepduration%>"/>
+   <br/>
+   <label for="slq">How well did you sleep today :</label>   
+   <input id="slq" required type="range" oninput="this.nextElementSibling.value = this.value" name="sleepquality" min="1" max="5" value="<%=day.sleepquality%>"/>
+   <output><%=day.sleepquality%></output>
+   <br/>
+   <label for="mmood">General mood this morning?</label>   
+   <input id="mmood" required type="range" oninput="this.nextElementSibling.value = this.value" name="mmood" min="1" max="5"value="<%=day.mmood%>"/>
+   <output><%=day.mmood%></output>
+   <br/>
+   <input type="submit" name="Report!">
+   </form>
+ 
